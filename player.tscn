@@ -75,7 +75,7 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sweqy"]
 resource_local_to_scene = true
-size = Vector2(84, 56)
+size = Vector2(26.9999, 40)
 
 [node name="Player" type="Area2D"]
 position = Vector2(0, 1)
@@ -84,10 +84,10 @@ script = ExtResource("1_sweqy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_dw050")
-animation = &"down"
+animation = &"right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.90735e-06, -1.00005)
+position = Vector2(0.999947, 2.50004)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_sweqy")
 

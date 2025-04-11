@@ -1,10 +1,17 @@
-[gd_scene load_steps=9 format=4 uid="uid://c53axopw42oha"]
+[gd_scene load_steps=11 format=4 uid="uid://c53axopw42oha"]
 
 [ext_resource type="Script" uid="uid://cwgml2u33atvd" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dio5wv4igg46a" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d2hmj0hi68ynp" path="res://mob.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b8l6oq35rlhay" path="res://food.tscn" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cmy4ymqqmhgqv" path="res://hud.tscn" id="4_1bvp3"]
 [ext_resource type="AudioStream" uid="uid://p42w155fmh1f" path="res://art/gameover.wav" id="5_lquwl"]
+
+[sub_resource type="Curve2D" id="Curve2D_lquwl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 88, 72, 0, 0, 0, 0, 712, 256, 0, 0, 0, 0, 480, 464, 0, 0, 0, 0, 56, 520, 0, 0, 0, 0, 128, 304, 0, 0, 0, 0, 128, 304, 0, 0, 0, 0, 88, 72)
+}
+point_count = 7
 
 [sub_resource type="Curve2D" id="Curve2D_ig7tw"]
 _data = {
@@ -24,6 +31,14 @@ loop = true
 [node name="Main" type="Node"]
 script = ExtResource("1_0xm2m")
 mob_scene = ExtResource("2_h2yge")
+food_scene = ExtResource("3_7mycd")
+
+[node name="FoodPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_lquwl")
+
+[node name="FoodSpawnLocation" type="PathFollow2D" parent="FoodPath"]
+position = Vector2(88, 72)
+rotation = 0.286745
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 
@@ -52,8 +67,13 @@ stream = SubResource("AudioStreamOggVorbis_1bvp3")
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_lquwl")
 
+[node name="FoodTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="timeout" from="FoodTimer" to="." method="_on_food_timer_timeout"]

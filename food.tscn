@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8l6oq35rlhay"]
+
+[ext_resource type="Texture2D" uid="uid://yil8bk114b3p" path="res://art2/food/carrot.png" id="1_pohk7"]
+[ext_resource type="Script" uid="uid://dndapw4ut2fqj" path="res://food.gd" id="1_q6vj8"]
+[ext_resource type="Texture2D" uid="uid://dcvm1lwcha0kt" path="res://art2/food/strawberry.png" id="2_q6vj8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8piq"]
+radius = 16.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5fm71"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pohk7")
+}],
+"loop": true,
+"name": &"carrot",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q6vj8")
+}],
+"loop": true,
+"name": &"strawberry",
+"speed": 3.0
+}]
+
+[node name="Food" type="RigidBody2D" groups=["food"]]
+collision_mask = 0
+script = ExtResource("1_q6vj8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v8piq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5fm71")
+animation = &"carrot"
+frame_progress = 0.771825
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daemgutaw7ds7"
-path="res://.godot/imported/carrot.png-fad8bbc229d9b55abc5f64aaf68c84e1.ctex"
+uid="uid://dm5hyeaduings"
+path="res://.godot/imported/Predator 1.png-aebb5f5925bbe6d09f1ad45175710a56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art2/carrot.png"
-dest_files=["res://.godot/imported/carrot.png-fad8bbc229d9b55abc5f64aaf68c84e1.ctex"]
+source_file="res://art2/mob/Predator 1.png"
+dest_files=["res://.godot/imported/Predator 1.png-aebb5f5925bbe6d09f1ad45175710a56.ctex"]
 
 [params]
 

@@ -70,8 +70,8 @@ stream = ExtResource("5_lquwl")
 [node name="FoodTimer" type="Timer" parent="."]
 wait_time = 0.25
 
-[connection signal="hit" from="Player" to="." method="game_over"]
-[connection signal="hit_food" from="Player" to="." method="game_increment_score"]
+[connection signal="hit_food" from="Player" to="." method="on_game_increment_score_handler"]
+[connection signal="hit_mob" from="Player" to="." method="on_hit_mob_handler"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

@@ -1,6 +1,6 @@
 extends Area2D
 
-signal hit
+signal hit_mob
 
 signal hit_food
 
@@ -44,8 +44,7 @@ func _process(delta):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("mobs"):
-		hide() # Player disappears after being hit.
-		hit.emit()
+		hit_mob.emit()
 	elif body.is_in_group("food"):
 		hit_food.emit()
 		

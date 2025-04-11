@@ -2,6 +2,8 @@ extends Area2D
 
 signal hit
 
+signal hit_food
+
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
 
@@ -41,10 +43,15 @@ func _process(delta):
 
 
 func _on_body_entered(body: Node2D) -> void:
-	hide() # Player disappears after being hit.
-	hit.emit()
+	if body.is_in_group("mobs"):
+		hide() # Player disappears after being hit.
+		hit.emit()
+	elif body.is_in_group("food"):
+		hit_food.emit()
+		
+	
 	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
+	#$CollisionShape2D.set_deferred("disabled", true)
 
 
 func start(pos):

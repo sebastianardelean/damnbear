@@ -62,12 +62,16 @@ func _on_mob_timer_timeout() -> void:
 
 
 func _on_score_timer_timeout() -> void:
-	#score += 1
-	$HUD.update_score(score)
+	#$HUD.update_score(score)
+	pass
 
+func game_increment_score() -> void:
+	score += 1
+	$HUD.update_score(score)
 
 func _on_start_timer_timeout() -> void:
 	$MobTimer.start()
+	$FoodTimer.start()
 	$ScoreTimer.start()
 
 
@@ -90,7 +94,7 @@ func _on_food_timer_timeout() -> void:
 	food.rotation = direction
 
 	# Choose the velocity for the mob.
-	var velocity = Vector2(randf_range(100.0, 200.0), 0.0)
+	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	food.linear_velocity = velocity.rotated(direction)
 
 	# Spawn the mob by adding it to the Main scene.

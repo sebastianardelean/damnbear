@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dcvm1lwcha0kt" path="res://art2/food/strawberry.png" id="2_q6vj8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8piq"]
-radius = 16.0
+radius = 22.0907
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5fm71"]
 animations = [{
@@ -34,9 +34,9 @@ script = ExtResource("1_q6vj8")
 shape = SubResource("CircleShape2D_v8piq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_5fm71")
 animation = &"carrot"
-frame_progress = 0.771825
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

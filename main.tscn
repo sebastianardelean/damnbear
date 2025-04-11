@@ -9,9 +9,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_lquwl"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 88, 72, 0, 0, 0, 0, 712, 256, 0, 0, 0, 0, 480, 464, 0, 0, 0, 0, 56, 520, 0, 0, 0, 0, 128, 304, 0, 0, 0, 0, 128, 304, 0, 0, 0, 0, 88, 72)
+"points": PackedVector2Array(0, 0, 0, 0, 88, 72, 0, 0, 0, 0, 704, 64, 0, 0, 0, 0, 704, 504, 0, 0, 0, 0, 88, 504, 0, 0, 0, 0, 88, 72)
 }
-point_count = 7
+point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_ig7tw"]
 _data = {
@@ -38,7 +38,7 @@ curve = SubResource("Curve2D_lquwl")
 
 [node name="FoodSpawnLocation" type="PathFollow2D" parent="FoodPath"]
 position = Vector2(88, 72)
-rotation = 0.286745
+rotation = -0.0129863
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 
@@ -69,9 +69,9 @@ stream = ExtResource("5_lquwl")
 
 [node name="FoodTimer" type="Timer" parent="."]
 wait_time = 0.25
-autostart = true
 
 [connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="hit_food" from="Player" to="." method="game_increment_score"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
